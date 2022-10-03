@@ -1,9 +1,8 @@
-import { Flex, Heading, Stack, Image, Text, Link, Spinner, Tooltip } from '@chakra-ui/react';
+import { Flex, Heading, Stack, Image, Text, Link, Button } from '@chakra-ui/react';
 import type { NextPage } from 'next'
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { BsCircleFill } from 'react-icons/bs';
-import { ping } from 'minecraft-protocol';
 
 const Home: NextPage = () => {
     const [pingData, setPingData] = useState(null);
@@ -28,7 +27,7 @@ const Home: NextPage = () => {
             <Head>
                 <title>tyger&apos;s valley</title>
             </Head>
-            <Flex w={"100vw"} h={"100vh"} top={"50%"} alignItems={"center"} justifyContent={"center"}>
+            <Flex h={"100vh"} top={"50%"} mx={"4vw"} alignItems={"center"} justifyContent={"center"}>
                 <Stack justifyContent={"center"} alignItems={"center"} spacing={8}>
                     <Image src="logo.png" alt={"logo"} w="128px" h="128px" />
                     <Stack justifyContent={"center"} alignItems={"center"} spacing={8}>
