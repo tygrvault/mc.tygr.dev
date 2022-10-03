@@ -1,4 +1,4 @@
-import { Flex, Heading, Stack, Image, Text, Link, Spinner } from '@chakra-ui/react';
+import { Flex, Heading, Stack, Image, Text, Link, Spinner, Tooltip } from '@chakra-ui/react';
 import type { NextPage } from 'next'
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
@@ -34,8 +34,7 @@ const Home: NextPage = () => {
 
         const interval = setInterval(() => {
             fetchData();
-            console.log(status)
-        }, 5000);
+        }, 500);
         return () => clearInterval(interval);
     }, []);
 
@@ -59,19 +58,29 @@ const Home: NextPage = () => {
                                 )}
                                 {status === "offline" && (
                                     <>
-                                        <BsCircleFill color={"red"} size={"12px"} />
+                                        <span>
+                                            <BsCircleFill color={"red"} size={"12px"} />
+                                        </span>
                                         <Text color="#8F9094">The server is currently offline.</Text>
                                     </>
                                 )}
                                 {status === "unknown" && (
                                     <>
-                                        <BsCircleFill color={"#F5A623"} size={"12px"} />
-                                        <Text color="#8F9094">Unable to ping the server.</Text>
+                                        <Tooltip label={"Unable to fetch latency."} placement={"top"} bg={"#fff"} color={"#000"}>
+                                            <span>
+                                                <BsCircleFill color={"#F5A623"} size={"12px"} />
+                                            </span>
+                                            <Text color="#8F9094">Unable to ping the server.</Text>
+                                        </Tooltip>
                                     </>
                                 )}
                                 {status === "online" && (
                                     <>
-                                        <BsCircleFill color={"#22CC52"} size={"12px"} />
+                                        <Tooltip label={`${pingData.latency}ms`} placement={"top"} bg={"#fff"} color={"#000"}>
+                                            <span>
+                                                <BsCircleFill color={"#22CC52"} size={"12px"} />
+                                            </span>
+                                        </Tooltip>
                                         <Text color="#8F9094">{pingData.players.online} / {pingData.players.max} players online.</Text>
                                     </>
                                 )}
