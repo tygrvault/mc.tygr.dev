@@ -1,4 +1,4 @@
-import { Flex, Heading, Stack, Image, Text, Link, Spinner, Tooltip } from '@chakra-ui/react';
+import { Flex, Heading, Stack, Image, Text, Link, Spinner, Tooltip, Button } from '@chakra-ui/react';
 import type { NextPage } from 'next'
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
@@ -7,6 +7,8 @@ import { BsCircleFill } from 'react-icons/bs';
 const Home: NextPage = () => {
     const [status, setStatus] = useState("loading");
     const [pingData, setPingData] = useState(null);
+    console.log(pingData)
+    console.log(status)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -22,7 +24,6 @@ const Home: NextPage = () => {
                     // Any other reason is unknown
                     setPingData(null);
                     setStatus('unknown');
-                    return;
                 }
             } else {
                 setPingData(data);
@@ -44,7 +45,7 @@ const Home: NextPage = () => {
             <Head>
                 <title>tyger&apos;s valley</title>
             </Head>
-            <Flex h={"100vh"} top={"50%"} mx={"4vw"} alignItems={"center"} justifyContent={"center"}>
+            <Flex h={"100vh"} top={"50%"} mx={"4vw"} alignItems={"center"} justifyContent={"center"} flexDirection="column">
                 <Stack justifyContent={"center"} alignItems={"center"} spacing={8}>
                     <Image src="logo.png" alt={"logo"} w="128px" h="128px" />
                     <Stack justifyContent={"center"} alignItems={"center"} spacing={8}>
@@ -58,20 +59,22 @@ const Home: NextPage = () => {
                                 )}
                                 {status === "offline" && (
                                     <>
-                                        <span>
-                                            <BsCircleFill color={"red"} size={"12px"} />
-                                        </span>
+                                        <Tooltip label={"Sorry."} placement={"top"} bg={"#fff"} color={"#000"}>
+                                            <span>
+                                                <BsCircleFill color={"red"} size={"12px"} />
+                                            </span>
+                                        </Tooltip>
                                         <Text color="#8F9094">The server is currently offline.</Text>
                                     </>
                                 )}
                                 {status === "unknown" && (
                                     <>
-                                        <Tooltip label={"Unable to fetch latency."} placement={"top"} bg={"#fff"} color={"#000"}>
+                                        <Tooltip label={"Sorry."} placement={"top"} bg={"#fff"} color={"#000"}>
                                             <span>
                                                 <BsCircleFill color={"#F5A623"} size={"12px"} />
                                             </span>
-                                            <Text color="#8F9094">Unable to ping the server.</Text>
                                         </Tooltip>
+                                        <Text color="#8F9094">Unable to ping the server.</Text>
                                     </>
                                 )}
                                 {status === "online" && (
@@ -85,23 +88,34 @@ const Home: NextPage = () => {
                                     </>
                                 )}
                             </Stack>
-                            <Heading>
+                            {/* <Tooltip label={"Click to copy."} placement={"top"} bg={"#fff"} color={"#000"} closeOnClick={false}> */}
+                            <Heading onClick={() => {
+                                navigator.clipboard.writeText("mc.tygr.dev")
+                            }}>
                                 mc.tygr.dev
                             </Heading>
-                            <Text textAlign={"center"} color="#8F9094">
+                            {/* </Tooltip> */}
+                            <Text textAlign={"center"} color="#8F9094" >
                                 This server is invite-only.
                                 <br />
                                 To get access, you need to be invited by a member of the server.
-                                <br /> <br />
+                                <br />
+                                By joining the server, you are agreeing to the <Link href="/guidelines" color="#fff">guidelines</Link>.
+                                <br /><br />
                             </Text>
+                            <Stack isInline spacing={4}>
+                                <Link href="https://map.mc.tygr.dev" isExternal>
+                                    <Button bg={"#fff"} color={"#000"}>
+                                        World Map
+                                    </Button>
+                                </Link>
+                                <Link href="/rules">
+                                    <Button bg={"#fff"} color={"#000"}>
+                                        Guidelines
+                                    </Button>
+                                </Link>
+                            </Stack>
                         </Stack>
-                        <Text textAlign={"center"} color="#FFFFFF">
-                            <Link p={2} href="https://twitter.com/tygerxqt" isExternal>Twitter</Link>
-                            {" "}•{" "}
-                            <Link p={2} href="https://instagram.com/tygerxqt" isExternal>Instagram</Link>
-                            {" "}•{" "}
-                            <Link p={2} href="https://discord.gg/BJ8sWHntYb" isExternal>Discord</Link>
-                        </Text>
                     </Stack>
                 </Stack>
             </Flex>
