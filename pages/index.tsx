@@ -105,7 +105,7 @@ const Home: NextPage = () => {
                             </Text>
                             <Stack isInline spacing={4}>
                                 <Link href="https://map.mc.tygr.dev" isExternal>
-                                    <Button bg={"#fff"} color={"#000"}>
+                                    <Button bg={"#fff"} color={"#000"} disabled={status !== "online"}>
                                         World Map
                                     </Button>
                                 </Link>
