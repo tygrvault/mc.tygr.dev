@@ -1,12 +1,49 @@
-import { Flex, Heading, Stack, Image, Text, Link, Spinner, Tooltip, Button } from '@chakra-ui/react';
+import { Flex, Heading, Stack, Image, Text, Link, Spinner, Tooltip, Button, useDisclosure, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, IconButton } from '@chakra-ui/react';
 import type { NextPage } from 'next'
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import { BsCircleFill } from 'react-icons/bs';
+import { BsCircleFill, BsFillPersonFill } from 'react-icons/bs';
+
+const Players = ({ isOpen, onOpen, onClose, players }: { isOpen: boolean, onOpen: () => void, onClose: () => void, players: Array<{ id: string, name: string }> }) => {
+    return (
+        <>
+            <Drawer isOpen={isOpen} onClose={onClose} placement={"right"}>
+                <DrawerOverlay />
+                <DrawerContent>
+                    <DrawerCloseButton />
+                    <DrawerHeader bg={"#111"}>
+                        Players Online ({players.length})
+                    </DrawerHeader>
+                    <DrawerBody bg={"#111"}>
+                        {players.map((player) => {
+                            return (
+                                <>
+                                    <Flex key={player.id} alignItems={"center"} justifyContent={"space-between"} mb={2}>
+                                        <Stack isInline alignItems={"center"} spacing={3}>
+                                            <Image src={`https://crafthead.net/helm/${player.id}/32`} alt={player.name} fontWeight={"semibold"} />
+                                            <Text>{player.name}</Text>
+                                        </Stack>
+                                        <Link href={`https://namemc.com/profile/${player.id}`} isExternal>
+                                            <IconButton icon={<BsFillPersonFill />} aria-label="NameMC Profile" width={"24px"} bg={"#fff"} color={"#000"} />
+                                        </Link>
+                                    </Flex>
+                                </>
+                            )
+                        })}
+                    </DrawerBody>
+                </DrawerContent>
+            </Drawer>
+        </>
+    )
+}
 
 const Home: NextPage = () => {
     const [status, setStatus] = useState("loading");
     const [pingData, setPingData] = useState(null);
+    const [players, setPlayers] = useState([]);
+    console.log(players)
+
+    const { isOpen, onOpen, onClose } = useDisclosure();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -24,6 +61,7 @@ const Home: NextPage = () => {
                     setStatus('unknown');
                 }
             } else {
+                setPlayers(data.players.online >= 1 && data.players.sample ? data.players.sample : []);
                 setPingData(data);
                 setStatus('online');
             }
@@ -82,7 +120,7 @@ const Home: NextPage = () => {
                                                 <BsCircleFill color={"#22CC52"} size={"12px"} />
                                             </span>
                                         </Tooltip>
-                                        <Text color="#8F9094">{pingData.players.online} / {pingData.players.max} players online.</Text>
+                                        <Text color="#8F9094">{players.length} / {pingData.players.max} players online.</Text>
                                     </>
                                 )}
                             </Stack>
@@ -112,6 +150,10 @@ const Home: NextPage = () => {
                                         Guidelines
                                     </Button>
                                 </Link>
+                                <Button bg={"#fff"} color={"#000"} onClick={onOpen} disabled={players.length < 1} isLoading={status === "loading"}>
+                                    Player List
+                                </Button>
+                                <Players isOpen={isOpen} onOpen={onOpen} onClose={onClose} players={players} />
                             </Stack>
                         </Stack>
                     </Stack>

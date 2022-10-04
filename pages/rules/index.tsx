@@ -27,7 +27,7 @@ const Rules: NextPage = () => {
                                 </Heading>
                                 <Text color="#8F9094">
                                     Any member of the server can vouch. The vouched member will be able to join the server.
-                                    However, if anyone you have vouched for is banned, you will loose your ability to vouch again.
+                                    However, if anyone you have vouched for is banned, you will lose your ability to vouch again.
                                 </Text>
                             </Stack>
                             <Stack>
