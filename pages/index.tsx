@@ -7,8 +7,6 @@ import { BsCircleFill } from 'react-icons/bs';
 const Home: NextPage = () => {
     const [status, setStatus] = useState("loading");
     const [pingData, setPingData] = useState(null);
-    console.log(pingData)
-    console.log(status)
 
     useEffect(() => {
         const fetchData = async () => {
