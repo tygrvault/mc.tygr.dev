@@ -41,7 +41,6 @@ const Home: NextPage = () => {
     const [status, setStatus] = useState("loading");
     const [pingData, setPingData] = useState(null);
     const [players, setPlayers] = useState([]);
-    console.log(players)
 
     const { isOpen, onOpen, onClose } = useDisclosure();
 
