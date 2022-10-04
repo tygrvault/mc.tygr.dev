@@ -8,21 +8,20 @@ const Rules: NextPage = () => {
             <Head>
                 <title>tyger&apos;s valley - rules</title>
             </Head>
-            <Flex m={8} alignItems={"center"} justifyContent={"center"} flexDirection="column">
+            <Flex py={8} px={4} minHeight={"100vh"} alignItems={"center"} justifyContent={"center"} flexDirection="column">
                 <Stack justifyContent={"center"} alignItems={"center"} spacing={8}>
                     <Image src="logo.png" alt={"logo"} w="128px" h="128px" />
                     <Stack justifyContent={"center"} alignItems={"center"} spacing={8} maxW="680px">
                         <Stack alignItems={"center"}>
-                            <Heading>
-                                Guidelines
-                            </Heading>
-                            <Text textAlign={"center"} color="#8F9094">
-                                These are the guidelines for the tyger&apos;s valley Minecraft server, not for the Discord server. <br /> Please read them carefully.
-                            </Text>
+                            <u>
+                                <Heading fontSize={["2xl", "3xl", "4xl"]}>
+                                    Guidelines
+                                </Heading>
+                            </u>
                         </Stack>
-                        <Stack spacing={16} alignItems={"center"} textAlign={"center"} p={4} border={"1px"} rounded={"xl"}>
+                        <Stack spacing={16} alignItems={"center"} textAlign={"center"} p={4}>
                             <Stack>
-                                <Heading fontSize={"3xl"}>
+                                <Heading fontSize={["xl", "2xl", "3xl"]}>
                                     Vouching
                                 </Heading>
                                 <Text color="#8F9094">
@@ -31,23 +30,15 @@ const Rules: NextPage = () => {
                                 </Text>
                             </Stack>
                             <Stack>
-                                <Heading fontSize={"3xl"}>
-                                    Don&apos;t be a dick.
+                                <Heading fontSize={["xl", "2xl", "3xl"]}>
+                                    Use common sense.
                                 </Heading>
                                 <Text color="#8F9094">
-                                    Be a decent human being. Don&apos;t be racist, homophobic, transphobic, sexist, etc.
+                                    Be a decent human being. Don&apos;t be racist, homophobic, transphobic, sexist, etc. <br /> Don&apos;t greif, steal, cheat, etc.
                                 </Text>
                             </Stack>
                             <Stack>
-                                <Heading fontSize={"3xl"}>
-                                    Don&apos;t beg for access.
-                                </Heading>
-                                <Text color="#8F9094">
-                                    If you are not vouched, you will not be able to join the server. And begging won&apos;t help.
-                                </Text>
-                            </Stack>
-                            <Stack>
-                                <Heading fontSize={"3xl"}>
+                                <Heading fontSize={["xl", "2xl", "3xl"]}>
                                     Have fun!
                                 </Heading>
                                 <Text color="#8F9094">
@@ -56,8 +47,8 @@ const Rules: NextPage = () => {
                             </Stack>
                         </Stack>
                         <Link href="/">
-                            <Button variant={"link"} color={"white"}>
-                                🡐 Go back
+                            <Button variant={"solid"} bg={"#fff"} color={"#000"}>
+                                Go back
                             </Button>
                         </Link>
                     </Stack>
