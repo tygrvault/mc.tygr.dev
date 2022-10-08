@@ -15,13 +15,15 @@ const Players = ({ isOpen, onOpen, onClose, players }: { isOpen: boolean, onOpen
                         Players Online ({players.length})
                     </DrawerHeader>
                     <DrawerBody bg={"#111"}>
-                        {players.map((player) => {
+                        {players.sort(function (a, b) {
+                            return a.name.length - b.name.length;
+                        }).map((player) => {
                             return (
                                 <>
-                                    <Flex key={player.id} alignItems={"center"} justifyContent={"space-between"} mb={2}>
+                                    <Flex key={player.id} alignItems={"center"} justifyContent={"space-between"} mb={6}>
                                         <Stack isInline alignItems={"center"} spacing={3}>
                                             <Image src={`https://crafthead.net/helm/${player.id}/32`} alt={player.name} fontWeight={"semibold"} />
-                                            <Text>{player.name}</Text>
+                                            <Text fontWeight={"bold"}>{player.name}</Text>
                                         </Stack>
                                         <Link href={`https://namemc.com/profile/${player.id}`} isExternal>
                                             <IconButton icon={<BsFillPersonFill />} aria-label="NameMC Profile" width={"24px"} bg={"#fff"} color={"#000"} />
