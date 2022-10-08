@@ -137,7 +137,7 @@ const Home: NextPage = () => {
                                 <br />
                                 To get access, you need to be invited by a member of the server.
                                 <br />
-                                By joining the server, you are agreeing to the <Link href="/guidelines" color="#fff">guidelines</Link>.
+                                By joining the server, you are agreeing to the <Link href="/rules" color="#fff">guidelines</Link>.
                                 <br /><br />
                             </Text>
                             <Stack isInline spacing={4}>
