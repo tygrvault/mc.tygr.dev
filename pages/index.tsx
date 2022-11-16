@@ -142,7 +142,7 @@ const Home: NextPage = () => {
                             </Text>
                             <Stack isInline spacing={4}>
                                 <Link href="https://map.mc.tygr.dev" isExternal>
-                                    <Button bg={"#fff"} color={"#000"} disabled={status !== "online"} isLoading={status === "loading"}>
+                                    <Button bg={"#fff"} color={"#000"} disabled={status !== "online"}>
                                         World Map
                                     </Button>
                                 </Link>
@@ -151,8 +151,8 @@ const Home: NextPage = () => {
                                         Guidelines
                                     </Button>
                                 </Link>
-                                <Button bg={"#fff"} color={"#000"} onClick={onOpen} disabled={players.length < 1} isLoading={status === "loading"}>
-                                    Player List
+                                <Button bg={"#fff"} color={"#000"} onClick={onOpen} disabled={players.length < 1}>
+                                        Player List
                                 </Button>
                                 <Players isOpen={isOpen} onOpen={onOpen} onClose={onClose} players={players} />
                             </Stack>
