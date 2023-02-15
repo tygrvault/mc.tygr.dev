@@ -1,7 +1,5 @@
 # A landing page for my Minecraft server.
-<a href="https://mc.tygr.dev">
-  <img width="2560" alt="mc.tygr.dev" src="https://user-images.githubusercontent.com/59417077/193879013-7482f285-9d15-4279-a42a-7b620414e895.png" />
-</a>
+![](https://user-images.githubusercontent.com/59417077/193879013-7482f285-9d15-4279-a42a-7b620414e895.png)
 
 # Tech stack
 - Framework: [NextJS](https://nextjs.org/).
