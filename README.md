@@ -14,7 +14,7 @@
 
 # Documentation
 - [NextJS Docs](https://nextjs.org/docs/getting-started).
-- [node-minecraft-protocal Docs](https://node-minecraft-protocol.prismarine.js.org/#/).
+- [node-minecraft-protocol Docs](https://node-minecraft-protocol.prismarine.js.org/#/).
 
 # Help
 If more help is needed, you can contact me by [e-mail](https://tygr.dev/mail), [tweet](https://twitter.com/intent/tweet?text=%40tygerxqt) to me or join the [Discord](https://tygr.dev/discord).
