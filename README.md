@@ -4,7 +4,7 @@
 # Tech stack
 - Framework: [NextJS](https://nextjs.org/).
 - Deployment: [Vercel](https://vercel.com/).
-- Minecraft Wrapper: [node-minecraft-protocal](https://github.com/PrismarineJS/node-minecraft-protocol).
+- Minecraft Wrapper: [node-minecraft-protocol](https://github.com/PrismarineJS/node-minecraft-protocol).
 
 # Scripts
 `yarn` - Install all packages.  
